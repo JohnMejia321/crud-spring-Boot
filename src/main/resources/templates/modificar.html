@@ -11,6 +11,8 @@
 
 <form th:action="@{/guardar}" method="post"  th:object="${persona}" >
 
+    <input type="hidden" name="idPersona" th:field="*{idPersona}" >
+
     <label>Nombre:</label>
     <input type="text"  name="nombre" th:field="*{nombre}"/>
 
