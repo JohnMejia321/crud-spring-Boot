@@ -1,14 +1,9 @@
 package com.udea.prueba.web;
 
 import com.udea.prueba.dao.PersonaDao;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import java.util.ArrayList;
-import java.util.Arrays;
+import com.udea.prueba.servicio.PersonaService;
 import lombok.extern.slf4j.Slf4j;
-import com.udea.prueba.domain.Persona;
-import org.springframework.beans.factory.annotation.Value;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -19,11 +14,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class Controlador {
 
 @Autowired
-private PersonaDao personaDao;
+private PersonaService personaService;
 
         @GetMapping("/")
         public String inicio(Model model){
-            var personas= personaDao.findAll();
+            var personas=personaService.listarPersonas();
             log.info("ejecutando el controlador Spring MVC");
             model.addAttribute("personas", personas);
             return "index";
